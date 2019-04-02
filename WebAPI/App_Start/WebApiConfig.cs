@@ -10,10 +10,7 @@ namespace WebAPI
     {
         public static void Register(HttpConfiguration config)
         {
-            // Enable Cors 
-            config.EnableCors(new EnableCorsAttribute("http://localhost:4200/", headers: "*", methods: "*"));
-
-
+            //config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "*"));
             // Web API configuration and services
 
             // Web API routes
@@ -23,9 +20,9 @@ namespace WebAPI
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-
             );
-
+            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
         }
     }
 }
