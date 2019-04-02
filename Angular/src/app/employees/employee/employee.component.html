@@ -1,7 +1,8 @@
-<form #form="ngForm">
+<form #form="ngForm" autocomplete="off">
   <div class="form-group">
     <label> Full Name </label>
-    <input name="FullName" #FullName="ngModel" [(ngModel)]="service.FormData.FullName" class="form-control">
+    <input name="FullName" #FullName="ngModel" [(ngModel)]="service.FormData.FullName" class="form-control" required>
+  <div class="validation-error" *ngIf= "FullName.invalid && FullName.touched">  This field is required! </div>
   </div>
   <div class="form-group">
     <label> Position </label>
@@ -16,10 +17,8 @@
       <label> Mobile </label>
       <input name="Mobile" #Position="ngModel" [(ngModel)]="service.FormData.Mobile" class="form-control">
     </div>
-    <div class="form-group"> 
-<button type="submit" class="btn btn-lg btn block"> Submit </button>
-
-    </div>
   </div>
-  
-  </form>
+  <div class="form-group">
+    <button type="submit" class="btn btn-lg btn-block"> Submit </button>
+  </div>
+</form>
