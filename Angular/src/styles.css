@@ -5,7 +5,7 @@
     font-weight: lighter;
 }
 
-button [type="submit"] {
+button[type=submit] {
     background-color: #67dfd4;
     color:#fff;
 }

@@ -25,4 +25,16 @@ export class EmployeeComponent implements OnInit {
       Mobile : '',
     }
   } 
+
+
+  onSubmit(form : NgForm) {
+  this.insertRecord(form);
+  }
+
+
+  insertRecord(form : NgForm){
+this.service.PostEmployee(form.value).subscribe(res=> {
+this.resetForm(form)
+})  //addon function
+  }
 }
