@@ -11,12 +11,19 @@ import { Employee } from 'src/app/shared/employee.model';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor(private service : EmployeeService) { }
+  constructor(private service : EmployeeService, private toastr : ToastrService) { }
 
   ngOnInit() {
     this.service.GetEmployees();
   }
   populateForm(emp : Employee) {
   this.service.FormData = Object.assign({}, emp);
+  }
+  
+  OnDelete (id: number){
+  this.service.deleteEmployee(id).subscribe(res=>{
+  this.service.GetEmployees();
+  this.toastr.warning("Deleted Sucessfully!", 'EMP. Register');
+});
   }
 }

@@ -3,6 +3,6 @@
     <td (click)="populateForm(emp)">{{emp.EMPCode}}-{{emp.FullName}}</td>
     <td (click)="populateForm(emp)">{{emp.Position}}</td>
     <td (click)="populateForm(emp)"> {{emp.Mobile}}</td>
-    <td> <button class="btn btn-sm btn-outline-danger">X</button></td>
+    <td> <button (click)="OnDelete(emp.EmployeeID)" class="btn btn-sm btn-outline-danger">X</button></td>
 </tr>
 </table>

@@ -20,6 +20,9 @@ readonly rootURL = "http://localhost:52514/api";
   }
 
   PutEmployee(FormData : Employee){
-    return this.http.put(this.rootURL + '/Employees' + FormData.EmployeeID , FormData);  
-}
+   return this.http.put(this.rootURL + '/Employees/'+FormData.EmployeeID,FormData);  
+  }
+  deleteEmployee (id: number){
+return this.http.delete(this.rootURL + '/Employees/'+id);
+  }
 }
