@@ -6,10 +6,17 @@ import {HttpClient} from "@angular/common/http";
 })
 export class EmployeeService {
 FormData : Employee;
+list : Employee[];
 readonly rootURL = "http://localhost:52514/api";
   constructor(private http : HttpClient) { }
+
   PostEmployee(FormData : Employee){
  return this.http.post(this.rootURL + '/Employees', FormData); 
+  }
+
+  GetEmployees(){
+    this.http.get(this.rootURL +'/Employees')
+    .toPromise().then(res => this.list = res as Employee[]);
   }
 }
 
