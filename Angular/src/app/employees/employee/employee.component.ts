@@ -26,17 +26,26 @@ export class EmployeeComponent implements OnInit {
       Mobile : '',
     }
   } 
-
-
   onSubmit(form : NgForm) {
-  this.insertRecord(form);
+    if (form.value.EmployeeID ==null) {
+      this.insertRecord(form);
+    }
+  else 
+this.updateRecord(form); 
   }
-
-
   insertRecord(form : NgForm){
 this.service.PostEmployee(form.value).subscribe(res=> {
 this.toastr.success("Inserted Sucessfully!", 'EMP. Register');
-this.resetForm(form)
-});  //Arrow function
+this.resetForm(form);
+this.service.GetEmployees();
+});
+//Arrow function 
   }
+  updateRecord (form: NgForm){
+    this.service.PutEmployee(form.value).subscribe(res=> {
+      this.toastr.success("Updated Sucessfully!", 'EMP. Register');
+      this.resetForm(form);
+      this.service.GetEmployees();
+    });
+    }
 }

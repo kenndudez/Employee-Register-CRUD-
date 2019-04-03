@@ -10,7 +10,8 @@ namespace WebAPI
     {
         public static void Register(HttpConfiguration config)
         {
-          
+            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -19,8 +20,6 @@ namespace WebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
         }
     }
 }

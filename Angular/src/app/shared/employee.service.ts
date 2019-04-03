@@ -18,5 +18,8 @@ readonly rootURL = "http://localhost:52514/api";
     this.http.get(this.rootURL +'/Employees')
     .toPromise().then(res => this.list = res as Employee[]);
   }
-}
 
+  PutEmployee(FormData : Employee){
+    return this.http.put(this.rootURL + '/Employees' + FormData.EmployeeID , FormData);  
+}
+}
