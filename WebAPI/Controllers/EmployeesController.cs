@@ -77,6 +77,7 @@ namespace WebAPI.Controllers
             }
 
             db.Employees.Remove(employee);
+
             db.SaveChanges();
 
             return Ok(employee);
